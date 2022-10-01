@@ -74,7 +74,7 @@ def run_driver():
     )
     driver = webdriver.Chrome(f"{os.getcwd()}/chromedriver", options=chrome_options)
     driver.get(f"https://sudoku.com/ko/{level}/")
-    driver.execute_script("window.scrollTo(0, 100);")
+    driver.execute_script("window.scrollTo(0, 20);")
     return driver
 
 
@@ -95,8 +95,9 @@ def init_canvas_btn_position(canvas):
     canvas_dimension = canvas.size
     height = canvas_dimension['height']
     width = canvas_dimension['width']
-    cell_width_offset = width // 9
-    cell_height_offset = height // 9
+    cell_width_offset = (width // 9) // 2
+    cell_height_offset = (height // 9) // 2
+    print(height, width)
     return [((height // 9) * row + cell_height_offset,
                       (width // 9) * col + cell_width_offset)
                      for row in range(9) for col in range(9) if table[row][col] == 0]
