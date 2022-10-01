@@ -2,6 +2,7 @@ from selenium import webdriver
 import solve
 import os
 import json
+from time import time
 from selenium.webdriver import ActionChains
 
 
@@ -115,11 +116,21 @@ def click_ans(res, canvas, driver, btn_positions, blanks):
 
 if __name__ == "__main__":
     level, level_api = select_level()
+
+    print("드라이버 시작 중...")
     driver = run_driver()
+
+    print("스도쿠 데이터 초기화 중...")
     table = init_table()
     canvas = get_canvas()
     btn_position = init_canvas_btn_position(canvas)
     blanks = get_blanks()
 
+    print("풀이 중...")
+    start = time()
     res = solve.recursive(0, 0, table)
+    print(f"풀이 시간: {time() - start:.2f}")
+
+    print("답 작성 중...")
     click_ans(res, canvas, driver, btn_position, blanks)
+    print("답안이 작성되었습니다.")
