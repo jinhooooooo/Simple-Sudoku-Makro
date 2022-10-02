@@ -1,9 +1,9 @@
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 import solve
 import os
 import json
 from time import time
-from selenium.webdriver import ActionChains
 
 
 def log_filter(log_):
