@@ -97,7 +97,6 @@ def init_canvas_btn_position(canvas):
     width = canvas_dimension['width']
     cell_width_offset = (width // 9) // 2
     cell_height_offset = (height // 9) // 2
-    print(height, width)
     return [((height // 9) * row + cell_height_offset,
                       (width // 9) * col + cell_width_offset)
                      for row in range(9) for col in range(9) if table[row][col] == 0]
